@@ -77,6 +77,7 @@ public class Inquilinos extends javax.swing.JFrame {
         lblFecNacimiento = new javax.swing.JLabel();
         txtSeleccioneFecha = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInquilinos = new javax.swing.JTable();
 
@@ -145,6 +146,8 @@ public class Inquilinos extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("DD/MM/YYYY.");
+
         javax.swing.GroupLayout pnlCentralLayout = new javax.swing.GroupLayout(pnlCentral);
         pnlCentral.setLayout(pnlCentralLayout);
         pnlCentralLayout.setHorizontalGroup(
@@ -161,6 +164,10 @@ public class Inquilinos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCentralLayout.createSequentialGroup()
+                                .addComponent(lblBuscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlCentralLayout.createSequentialGroup()
                                 .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCedula)
                                     .addComponent(txtNombre)
@@ -176,15 +183,14 @@ public class Inquilinos extends javax.swing.JFrame {
                                 .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(frmTelefono)
                                     .addComponent(txtOcupacion)
+                                    .addComponent(txtSeleccioneFecha)
                                     .addGroup(pnlCentralLayout.createSequentialGroup()
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtSeleccioneFecha)))
-                            .addGroup(pnlCentralLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBuscar)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlCentralLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel2))
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(pnlCentralLayout.createSequentialGroup()
                         .addGap(238, 238, 238)
                         .addComponent(jLabel1)
@@ -226,7 +232,9 @@ public class Inquilinos extends javax.swing.JFrame {
                     .addComponent(cmbxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblOcupacion)
                     .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(2, 2, 2)
                 .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccion)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -569,6 +577,7 @@ public class Inquilinos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbxGenero;
     private javax.swing.JFormattedTextField frmTelefono;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblCedula;

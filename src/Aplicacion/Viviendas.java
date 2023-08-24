@@ -174,6 +174,12 @@ public class Viviendas extends javax.swing.JFrame {
 
         lblPropietario.setText("Propietario");
 
+        txtPropietario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtPropietarioMouseEntered(evt);
+            }
+        });
+
         lblBuscarId.setText("Buscar Id");
 
         txtBuscarId.addActionListener(new java.awt.event.ActionListener() {
@@ -484,31 +490,31 @@ public class Viviendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-     int filaSeleccionada = tblViviendas.getSelectedRow();
+        int filaSeleccionada = tblViviendas.getSelectedRow();
 
-    if (filaSeleccionada == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una vivienda para editar.", "Vivienda no seleccionada", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una vivienda para editar.", "Vivienda no seleccionada", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    viviendaSeleccionada = viviendasList.get(filaSeleccionada);
+        viviendaSeleccionada = viviendasList.get(filaSeleccionada);
 
-    txtIdVivienda.setText(String.valueOf(viviendaSeleccionada.getIdVivienda()));
-    txtaDescripcion.setText(viviendaSeleccionada.getDescripcion());
-    txtDireccion.setText(viviendaSeleccionada.getDireccion());
-    txtMtsConstruc.setText(String.valueOf(viviendaSeleccionada.getMtsConstruct()));
-    txtMtsLote.setText(String.valueOf(viviendaSeleccionada.getMtsLote()));
-    cmbxTipoConstruccion.setSelectedItem(viviendaSeleccionada.getTipoConstruccion());
-    cmbxCochera.setSelectedItem(viviendaSeleccionada.isCochera() ? "Si" : "No");
-    txtCantHabitaciones.setText(String.valueOf(viviendaSeleccionada.getCantHabitac()));
-    txtCantBaños.setText(String.valueOf(viviendaSeleccionada.getCantBaños()));
-    cmbxCarretera.setSelectedItem(viviendaSeleccionada.getCarretera());
-    txtPrecioBase.setText(String.valueOf(viviendaSeleccionada.getPrecioBase()));
-    txtDepositoGarantia.setText(String.valueOf(viviendaSeleccionada.getDepositoGarantia()));
+        txtIdVivienda.setText(String.valueOf(viviendaSeleccionada.getIdVivienda()));
+        txtaDescripcion.setText(viviendaSeleccionada.getDescripcion());
+        txtDireccion.setText(viviendaSeleccionada.getDireccion());
+        txtMtsConstruc.setText(String.valueOf(viviendaSeleccionada.getMtsConstruct()));
+        txtMtsLote.setText(String.valueOf(viviendaSeleccionada.getMtsLote()));
+        cmbxTipoConstruccion.setSelectedItem(viviendaSeleccionada.getTipoConstruccion());
+        cmbxCochera.setSelectedItem(viviendaSeleccionada.isCochera() ? "Si" : "No");
+        txtCantHabitaciones.setText(String.valueOf(viviendaSeleccionada.getCantHabitac()));
+        txtCantBaños.setText(String.valueOf(viviendaSeleccionada.getCantBaños()));
+        cmbxCarretera.setSelectedItem(viviendaSeleccionada.getCarretera());
+        txtPrecioBase.setText(String.valueOf(viviendaSeleccionada.getPrecioBase()));
+        txtDepositoGarantia.setText(String.valueOf(viviendaSeleccionada.getDepositoGarantia()));
 
-    // Desactivar el botón "Guardar" y activar el botón "Actualizar"
-    btnGuardar.setEnabled(false);
-    btnActualizar.setEnabled(true);
+        // Desactivar el botón "Guardar" y activar el botón "Actualizar"
+        btnGuardar.setEnabled(false);
+        btnActualizar.setEnabled(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -647,13 +653,18 @@ public class Viviendas extends javax.swing.JFrame {
 
         // Crear un filtro que busque coincidencias en las columnas de Cédula (0) y Nombre (1)
         RowFilter<TableModel, Object> cedulaFilter = RowFilter.regexFilter("^" + buscar + "$", 0);
-        RowFilter<TableModel, Object> nombreFilter = RowFilter.regexFilter(buscar, 1, 2); 
+        RowFilter<TableModel, Object> nombreFilter = RowFilter.regexFilter(buscar, 1, 2);
 
         // Combinar los filtros para que se cumpla cualquiera de las condiciones (OR)
         RowFilter<TableModel, Object> combinedFilter = RowFilter.orFilter(java.util.Arrays.asList(cedulaFilter, nombreFilter));
 
         sorter.setRowFilter(combinedFilter);
     }//GEN-LAST:event_txtBuscarIdActionPerformed
+
+    private void txtPropietarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPropietarioMouseEntered
+        String tooltipMessage = "Por favor, ingrese la cedula del Propietario.";
+        txtPropietario.setToolTipText(tooltipMessage);
+    }//GEN-LAST:event_txtPropietarioMouseEntered
 
     private Propietario obtenerPropietario(String cedula) {
         int cedulaNumero = Integer.parseInt(cedula);

@@ -471,6 +471,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPropietario">
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtPropietarioMouseEntered"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBuscarId">
           <Properties>

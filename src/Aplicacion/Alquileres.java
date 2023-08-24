@@ -85,6 +85,7 @@ public class Alquileres extends javax.swing.JFrame {
         lblBuscarNum = new javax.swing.JLabel();
         txtBuscarNum = new javax.swing.JTextField();
         cmbxEstado = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAlquileres = new javax.swing.JTable();
 
@@ -147,7 +148,19 @@ public class Alquileres extends javax.swing.JFrame {
 
         lblCedInquilino.setText("CedInquilino ");
 
+        txtCedInquilino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCedInquilinoMouseEntered(evt);
+            }
+        });
+
         lblIdVivienda.setText("IdVivienda ");
+
+        txtIdVivienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdViviendaActionPerformed(evt);
+            }
+        });
 
         lblEstado.setText("Estado ");
 
@@ -160,6 +173,8 @@ public class Alquileres extends javax.swing.JFrame {
         });
 
         cmbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Vigente", "Vencido", "Cancelado" }));
+
+        jLabel1.setText("= YYYY-MM-DD");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,9 +213,12 @@ public class Alquileres extends javax.swing.JFrame {
                             .addComponent(txtNumeroAlquiler))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPorIncremAnual, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblPorIncremAnual))
                                     .addComponent(lblPrecioAlquiler, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblIdVivienda)
@@ -249,7 +267,8 @@ public class Alquileres extends javax.swing.JFrame {
                     .addComponent(lblFechaContratro)
                     .addComponent(txtFechaContratro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPorIncremAnual)
-                    .addComponent(txtPorIncremAnual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPorIncremAnual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantMeses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -455,6 +474,17 @@ public class Alquileres extends javax.swing.JFrame {
         sorter.setRowFilter(combinedFilter);
     }//GEN-LAST:event_txtBuscarNumActionPerformed
 
+    private void txtCedInquilinoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedInquilinoMouseEntered
+        String tooltipMessage = "Por favor, ingrese la cédula del inquilino.";
+        txtCedInquilino.setToolTipText(tooltipMessage);
+    }//GEN-LAST:event_txtCedInquilinoMouseEntered
+
+    private void txtIdViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdViviendaActionPerformed
+
+        String tooltipMessage = "Por favor, ingrese la ID Vivienda.";
+        txtIdVivienda.setToolTipText(tooltipMessage);
+    }//GEN-LAST:event_txtIdViviendaActionPerformed
+
     private void LimpiarCampos() {
         txtNumeroAlquiler.setText("");
         txtFechaContratro.setText("");
@@ -543,6 +573,7 @@ public class Alquileres extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbxEstado;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAlquileres;
