@@ -301,24 +301,19 @@ public class GuanaRent extends javax.swing.JFrame {
     }//GEN-LAST:event_mntCreadorActionPerformed
 
     private void mntInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntInformacionActionPerformed
-      
+
         String message = "<html><p style='text-align: justify; width: 300px;'>"
-            + "La empresa GuanaRent es una organización que se dedica al alquiler de viviendas "
-            + "en la provincia de Guanacaste. Ellos poseen clientes de 2 tipos, los primeros son los "
-            + "dueños de las propiedades que se dan en alquiler, los segundos, son las personas "
-            + "que arriendan una o más de las casas disponibles. GuanaRent obtiene sus ingresos "
-            + "de la siguiente forma: se gana la mitad del depósito de garantía de cada alquiler "
-            + "y se gana un 5% en cada mensualidad de cada casa rentada. Haga un programa "
-            + "que le permita a la Empresa GuanaRent llevar el control de sus clientes, las "
-            + "viviendas, los alquileres, las mensualidades y las ganancias mensuales que obtiene. "
-            + "El programa debe implementarse en Java, haciendo uso de la biblioteca gráfica "
-            + "Swing y de otras librerías de terceros que consideren necesario. Se debe hacer uso "
-            + "obligatorio de ArrayList de objetos para el almacenamiento de los datos y de "
-            + "programación orientada a objetos. En cada espacio del ArrayList se debe "
-            + "almacenar un objeto Vivienda, Propietario, Inquilino, entre otros."
-            + "</p></html>";
-    
-    JOptionPane.showMessageDialog(this, message);
+                + "La empresa GuanaRent es una organización que se dedica al alquiler de viviendas "
+                + "en la provincia de Guanacaste. Ellos poseen clientes de 2 tipos, los primeros son los "
+                + "dueños de las propiedades que se dan en alquiler, los segundos, son las personas "
+                + "que arriendan una o más de las casas disponibles. GuanaRent obtiene sus ingresos "
+                + "de la siguiente forma: se gana la mitad del depósito de garantía de cada alquiler "
+                + "y se gana un 5% en cada mensualidad de cada casa rentada. Haga un programa "
+                + "que le permita a la Empresa GuanaRent llevar el control de sus clientes, las "
+                + "viviendas, los alquileres, las mensualidades y las ganancias mensuales que obtiene. "
+                + "</p></html>";
+
+        JOptionPane.showMessageDialog(this, message);
     }//GEN-LAST:event_mntInformacionActionPerformed
 
     /**
