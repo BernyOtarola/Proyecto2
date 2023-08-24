@@ -311,10 +311,10 @@ public class Ganancias extends javax.swing.JFrame {
 
         if (selectedOption != null && !selectedOption.isEmpty()) {
             if (selectedOption.equals("Ganancias Anual")) {
-                // TODO: Add logic for "Ganancias Anual"
+
             } else if (selectedOption.equals("Ganancias Mensuales")) {
                 String selectedMonth = cmbxTipoGanancias.getSelectedItem().toString();
-                String selectedYear = "2023"; // Replace this with actual selected year
+                String selectedYear = "2023"; 
 
                 double totalMonthlyEarnings = 0.0;
 
