@@ -511,10 +511,12 @@ public class Viviendas extends javax.swing.JFrame {
         cmbxCarretera.setSelectedItem(viviendaSeleccionada.getCarretera());
         txtPrecioBase.setText(String.valueOf(viviendaSeleccionada.getPrecioBase()));
         txtDepositoGarantia.setText(String.valueOf(viviendaSeleccionada.getDepositoGarantia()));
+        cmbxEstado.setSelectedItem(viviendaSeleccionada.getEstado());  // Populate Estado
+        txtPropietario.setText(String.valueOf(viviendaSeleccionada.getPropietario().getCedPropiet()));  // Populate Propietario
 
-        // Desactivar el botón "Guardar" y activar el botón "Actualizar"
-        btnGuardar.setEnabled(false);
         btnActualizar.setEnabled(true);
+
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -524,6 +526,7 @@ public class Viviendas extends javax.swing.JFrame {
         }
 
         try {
+            // Retrieve the data from the fields
             String descripcion = txtaDescripcion.getText();
             String direccion = txtDireccion.getText();
             String mtsConstructText = txtMtsConstruc.getText();
@@ -538,52 +541,7 @@ public class Viviendas extends javax.swing.JFrame {
             String estado = cmbxEstado.getSelectedItem().toString();
             String propietarioCedula = txtPropietario.getText();
 
-            if (descripcion.isEmpty() || direccion.isEmpty() || tipoConstruccion.isEmpty() || carretera.isEmpty()
-                    || mtsConstructText.isEmpty() || mtsLoteText.isEmpty() || cantHabitacText.isEmpty()
-                    || cantBañosText.isEmpty() || precioBaseText.isEmpty() || depositoGarantiaText.isEmpty()
-                    || estado.isEmpty() || propietarioCedula.isEmpty()) {
-
-                StringBuilder errorMessage = new StringBuilder("Los siguientes campos están vacíos o incompletos:\n");
-
-                if (descripcion.isEmpty()) {
-                    errorMessage.append("- Descripcion\n");
-                }
-                if (direccion.isEmpty()) {
-                    errorMessage.append("- Direccion\n");
-                }
-                if (mtsConstructText.isEmpty()) {
-                    errorMessage.append("- mtsConstruct\n");
-                }
-                if (mtsLoteText.isEmpty()) {
-                    errorMessage.append("- mtsLote\n");
-                }
-
-                if (tipoConstruccion.isEmpty()) {
-                    errorMessage.append("- TipoConstruccion\n");
-                }
-                if (cantHabitacText.isEmpty()) {
-                    errorMessage.append("- CantHabitac\n");
-                }
-                if (cantBañosText.isEmpty()) {
-                    errorMessage.append("- CantBaños\n");
-                }
-                if (carretera.isEmpty()) {
-                    errorMessage.append("- Carretera\n");
-                }
-                if (precioBaseText.isEmpty()) {
-                    errorMessage.append("- PrecioBase\n");
-                }
-                if (depositoGarantiaText.isEmpty()) {
-                    errorMessage.append("- DepositoGarantia\n");
-                }
-                if (estado.isEmpty()) {
-                    errorMessage.append("- Estado\n");
-                }
-
-                JOptionPane.showMessageDialog(this, errorMessage.toString(), "Campos Vacíos o Incompletos", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
+            // Parse numeric data
             double mtsConstruct = Double.parseDouble(mtsConstructText);
             double mtsLote = Double.parseDouble(mtsLoteText);
             int cantHabitac = Integer.parseInt(cantHabitacText);
@@ -591,13 +549,7 @@ public class Viviendas extends javax.swing.JFrame {
             double precioBase = Double.parseDouble(precioBaseText);
             double depositoGarantia = Double.parseDouble(depositoGarantiaText);
 
-            Propietario propietario = obtenerPropietario(propietarioCedula);
-
-            if (propietario == null) {
-                JOptionPane.showMessageDialog(this, "El propietario no existe", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
+            // Update the viviendaSeleccionada with the new data
             viviendaSeleccionada.setDescripcion(descripcion);
             viviendaSeleccionada.setDireccion(direccion);
             viviendaSeleccionada.setMtsConstruct(mtsConstruct);
@@ -610,13 +562,16 @@ public class Viviendas extends javax.swing.JFrame {
             viviendaSeleccionada.setPrecioBase(precioBase);
             viviendaSeleccionada.setDepositoGarantia(depositoGarantia);
             viviendaSeleccionada.setEstado(estado);
-            viviendaSeleccionada.setPropietario(propietario);
+            viviendaSeleccionada.setPropietario(obtenerPropietario(propietarioCedula));
 
+            // Update the table
             actualizarTablaViviendas();
 
-            // Reset the UI elements and enable/disable buttons as needed
+            // Reset UI elements
             limpiarCampos();
-            btnGuardar.setEnabled(true);
+            viviendaSeleccionada = null;  // Reset the selected vivienda
+
+            // Optionally disable the "btnActualizar" button again
             btnActualizar.setEnabled(false);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error", JOptionPane.ERROR_MESSAGE);

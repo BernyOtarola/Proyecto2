@@ -35,6 +35,7 @@ public class GuanaRent extends javax.swing.JFrame {
      */
     public GuanaRent() {
         initComponents();
+        setTitle("Menu Principal GuanaRent");
     }
 
     /**
