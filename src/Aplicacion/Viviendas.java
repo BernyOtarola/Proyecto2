@@ -526,7 +526,7 @@ public class Viviendas extends javax.swing.JFrame {
         }
 
         try {
-            // Retrieve the data from the fields
+
             String descripcion = txtaDescripcion.getText();
             String direccion = txtDireccion.getText();
             String mtsConstructText = txtMtsConstruc.getText();
@@ -541,7 +541,6 @@ public class Viviendas extends javax.swing.JFrame {
             String estado = cmbxEstado.getSelectedItem().toString();
             String propietarioCedula = txtPropietario.getText();
 
-            // Parse numeric data
             double mtsConstruct = Double.parseDouble(mtsConstructText);
             double mtsLote = Double.parseDouble(mtsLoteText);
             int cantHabitac = Integer.parseInt(cantHabitacText);
@@ -549,7 +548,6 @@ public class Viviendas extends javax.swing.JFrame {
             double precioBase = Double.parseDouble(precioBaseText);
             double depositoGarantia = Double.parseDouble(depositoGarantiaText);
 
-            // Update the viviendaSeleccionada with the new data
             viviendaSeleccionada.setDescripcion(descripcion);
             viviendaSeleccionada.setDireccion(direccion);
             viviendaSeleccionada.setMtsConstruct(mtsConstruct);
@@ -564,14 +562,11 @@ public class Viviendas extends javax.swing.JFrame {
             viviendaSeleccionada.setEstado(estado);
             viviendaSeleccionada.setPropietario(obtenerPropietario(propietarioCedula));
 
-            // Update the table
             actualizarTablaViviendas();
 
-            // Reset UI elements
             limpiarCampos();
-            viviendaSeleccionada = null;  // Reset the selected vivienda
+            viviendaSeleccionada = null;
 
-            // Optionally disable the "btnActualizar" button again
             btnActualizar.setEnabled(false);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error", JOptionPane.ERROR_MESSAGE);
