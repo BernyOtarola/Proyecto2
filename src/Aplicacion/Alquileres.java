@@ -415,7 +415,6 @@ public class Alquileres extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Seleccione un alquiler de la tabla para eliminar.", "Alquiler no seleccionado", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
         int option = JOptionPane.showConfirmDialog(this, "¿Está seguro de que desea eliminar este alquiler?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             Alquiler alquilerAEliminar = alquileresList.get(selectedRow);
@@ -432,14 +431,31 @@ public class Alquileres extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Seleccione un alquiler de la tabla para actualizar.", "Alquiler no seleccionado", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        btnGuardar.setEnabled(false);
-        btnActuliazar.setEnabled(true);
+
+        alquilerSeleccionado = alquileresList.get(selectedRow);
+
+        txtNumeroAlquiler.setText(String.valueOf(alquilerSeleccionado.getNumAlquiler()));
+        txtFechaContratro.setText(alquilerSeleccionado.getFechContrato().toString());
+        txtCantMeses.setText(String.valueOf(alquilerSeleccionado.getCantMeses()));
+        txtNumAdultos.setText(String.valueOf(alquilerSeleccionado.getNumAdultos()));
+        txtNumNiños.setText(String.valueOf(alquilerSeleccionado.getNumNiños()));
+        txtDepositoGarantia.setText(String.valueOf(alquilerSeleccionado.getDepositoGarantia()));
+        txtPrecioAlquiler.setText(String.valueOf(alquilerSeleccionado.getPrecioAlquiler()));
+        txtPorIncremAnual.setText(String.valueOf(alquilerSeleccionado.getPorcIncremAnual()));
+        txtCedInquilino.setText(String.valueOf(alquilerSeleccionado.getInquilino().getCedInqui()));
+        txtIdVivienda.setText(String.valueOf(alquilerSeleccionado.getVivienda().getIdVivienda()));
+        cmbxEstado.setSelectedItem(alquilerSeleccionado.getEstado());
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnActuliazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActuliazarActionPerformed
+        if (alquilerSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione un alquiler de la tabla para actualizar.", "Alquiler no seleccionado", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         try {
-
+            // Update selected alquiler with new values
             alquilerSeleccionado.setFechContrato(LocalDate.parse(txtFechaContratro.getText()));
             alquilerSeleccionado.setCantMeses(Integer.parseInt(txtCantMeses.getText()));
             alquilerSeleccionado.setNumAdultos(Integer.parseInt(txtNumAdultos.getText()));
@@ -449,10 +465,10 @@ public class Alquileres extends javax.swing.JFrame {
             alquilerSeleccionado.setPorcIncremAnual(Double.parseDouble(txtPorIncremAnual.getText()));
             alquilerSeleccionado.setEstado(cmbxEstado.getSelectedItem().toString());
 
-            // Actualizar la lista y la tabla
             agregarAlquilerATabla();
 
             JOptionPane.showMessageDialog(this, "Alquiler actualizado exitosamente.", "Alquiler actualizado", JOptionPane.INFORMATION_MESSAGE);
+            LimpiarCampos();
         } catch (DateTimeParseException | NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifique los valores numéricos y las fechas.", "Error de formato", JOptionPane.ERROR_MESSAGE);
         }
