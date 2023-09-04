@@ -297,7 +297,7 @@ public class GuanaRent extends javax.swing.JFrame {
 
     private void mntCreadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntCreadorActionPerformed
 
-        JOptionPane.showMessageDialog(this, "Esta aplicación fue creada por [Berny Otárola] y [Jordyn Lara].");
+        JOptionPane.showMessageDialog(this, "Esta aplicación fue creada por Berny Otárola.");
 
     }//GEN-LAST:event_mntCreadorActionPerformed
 
